@@ -1,0 +1,18 @@
+version: '3.5'
+
+name: wb-api
+services:
+    app:
+        build: ./docker/images/php81
+        volumes:
+            - ./application:/app
+        ports:
+            - "6969:8000"
+        networks:
+            - cluster
+networks:
+    cluster:
+        name: cluster
+        external: true
+        driver: bridge
+
