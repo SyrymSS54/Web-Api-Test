@@ -16,7 +16,7 @@ class SalesController extends Controller
         $dateFrom = $credentials['dateFrom'];
         $limit = $credentials['limit'];
 
-        $result = SaleModel::whereDate('created_at', '>', $dateFrom)->take($limit)->paginate(5);
+        $result = SaleModel::whereDate('created_at', '>', $dateFrom)->with('order')->take($limit)->paginate(5);
 
         return response()->json($result);
     }

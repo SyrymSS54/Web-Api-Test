@@ -18,7 +18,7 @@ class IncomeController extends Controller
         $dateTo = $credentials['dateTo'];
         $limit = $credentials['limit'];
 
-        $result = StockModel::whereDate('created_at', '>', $dateFrom)->whereDate('created_at' ,'<', $dateTo)->paginate(5);
+        $result = StockModel::whereDate('created_at', '>', $dateFrom)->whereDate('created_at' ,'<', $dateTo)->take($limit)->paginate(5);
 
         return response()->json($result);
     }
